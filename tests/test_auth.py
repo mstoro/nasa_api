@@ -4,7 +4,7 @@ import unittest
 from faker import Faker
 from flask import current_app
 
-from app.app import app
+from app import app
 
 fake = Faker()
 
