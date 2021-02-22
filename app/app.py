@@ -14,5 +14,3 @@ app.register_blueprint(auth)
 app.register_blueprint(apod_api)
 
 db.init_app(app)
-
-

@@ -35,7 +35,10 @@ class AuthenticationTest(unittest.TestCase):
             client = current_app.test_client(self)
             credentials = base64.b64encode(b'test:test').decode('utf-8')
 
-            response = client.post('/login', headers={'Authorization': f'Basic {credentials}'})
+            response = client.post(
+                '/login',
+                headers={'Authorization': f'Basic {credentials}'}
+            )
             json_data = response.get_json()
 
             self.assertEqual(response.status_code, 200)
@@ -60,7 +63,11 @@ class AuthenticationTest(unittest.TestCase):
             self.assertEqual(json_data['message'], 'Token is missing!')
 
             # request with jwt token
-            response = client.post('/apod', json=payload, headers={'token': token})
+            response = client.post(
+                '/apod',
+                json=payload,
+                headers={'token': token}
+            )
             json_data = response.get_json()
 
             self.assertEqual(response.status_code, 200)
@@ -70,8 +77,3 @@ class AuthenticationTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
-
-

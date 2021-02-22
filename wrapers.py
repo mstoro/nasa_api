@@ -25,7 +25,8 @@ def token_required(f):
             )
             current_user = User.query.filter_by(id=data['id']).first()
         except jwt.ExpiredSignatureError:
-            return jsonify({'message': 'Your token expired! Please refresh it!'})
+            return jsonify({'message': 'Your token expired! \
+            Please refresh it!'})
         except jwt.InvalidTokenError:
             return jsonify({'message': 'Token is invalid!'})
 
