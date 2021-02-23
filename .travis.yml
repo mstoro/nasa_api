@@ -6,4 +6,4 @@ install:
 script:
   - flake8 .
   - sqlite3 app.db < schema.sql
-  - python -m unittest test/test_auth.py
+  - python -m unittest tests/test_auth.py
