@@ -1,9 +1,9 @@
 from functools import wraps
 
 import jwt
-from flask import request, jsonify, current_app
+from flask import request, current_app
 
-from db import User
+from api.errors import TokenError, EXPIRED_TOKEN, INVALID_TOKEN, MISSING_TOKEN
 
 
 def token_required(function):
@@ -15,20 +15,18 @@ def token_required(function):
             token = request.headers['token']
 
         if not token:
-            return jsonify({'message': 'Token is missing!'})
+            raise TokenError(MISSING_TOKEN)
 
         try:
-            data = jwt.decode(
+            jwt.decode(
                 token,
                 current_app.config['SECRET_KEY'],
                 algorithms=['HS256']
             )
-            current_user = User.query.filter_by(id=data['id']).first()
         except jwt.ExpiredSignatureError:
-            return jsonify({'message': 'Your token expired! \
-            Please refresh it!'})
+            raise TokenError(EXPIRED_TOKEN)
         except jwt.InvalidTokenError:
-            return jsonify({'message': 'Token is invalid!'})
+            raise TokenError(INVALID_TOKEN)
 
-        return function(current_user, *args, **kwargs)
+        return function(*args, **kwargs)
     return decorated

@@ -60,7 +60,7 @@ class AuthenticationTest(unittest.TestCase):
             response = client.post('/apod', json=payload)
             json_data = response.get_json()
 
-            self.assertEqual(json_data['message'], 'Token is missing!')
+            self.assertEqual(json_data[0], {'message': 'Token is missing!'})
 
             # request with jwt token
             response = client.post(
