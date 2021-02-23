@@ -7,14 +7,15 @@ from api.request import Request
 from api.schemas import PayloadSchema
 from api.utils import get_params, bytearray_to_img
 from api.wrappers import token_required
+from app import app
 
 apod_api = Blueprint('apod', __name__)
 
 
 @apod_api.route('/apod', methods=['POST'])
 @token_required
-def apod(current_user):
-    url = 'https://api.nasa.gov/planetary/apod'
+def apod():
+    url = app.config['APOD_URL']
 
     user_params = get_params(request)
 

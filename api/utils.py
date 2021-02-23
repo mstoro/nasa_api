@@ -1,12 +1,6 @@
 from io import BytesIO
 
-import requests
 from PIL import Image
-
-
-def make_request(url, params=None):
-    response = requests.get(url, params=params)
-    return response.json()
 
 
 def get_params(request):
