@@ -2,8 +2,8 @@ from flask import Flask
 
 from api.apod import apod_api
 from auth import auth
-
 from db import db
+
 app = Flask(__name__)
 
 app.config.from_object('config.Config')

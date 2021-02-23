@@ -1,5 +1,6 @@
-from marshmallow import Schema, fields, ValidationError
 from datetime import date
+
+from marshmallow import Schema, fields, ValidationError
 
 
 def validate_str(string):

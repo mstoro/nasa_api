@@ -1,6 +1,7 @@
+from io import BytesIO
+
 import requests
 from PIL import Image
-from io import BytesIO
 
 
 def make_request(url, params=None):

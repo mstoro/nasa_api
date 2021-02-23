@@ -4,7 +4,6 @@ import jwt
 from flask import request, jsonify, Blueprint, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
 from db import User
 from db import db
 

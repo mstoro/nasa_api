@@ -3,9 +3,9 @@ import base64
 import requests
 from flask import request, jsonify, Blueprint
 
-from api.utils import get_params, bytearray_to_img
-from api.schemas import PayloadSchema
 from api.request import Request
+from api.schemas import PayloadSchema
+from api.utils import get_params, bytearray_to_img
 from api.wrappers import token_required
 
 apod_api = Blueprint('apod', __name__)
