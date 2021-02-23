@@ -5,6 +5,7 @@ from faker import Faker
 from flask import current_app
 
 from app import app
+from db import delete_test_user
 
 fake = Faker()
 
@@ -29,6 +30,10 @@ class AuthenticationTest(unittest.TestCase):
 
             self.assertEqual(response.status_code, 200)
             self.assertEqual(json_data, {'message': 'New user created!'})
+
+            payload['name'] = 'test'
+            payload['password'] = 'test'
+            client.post('/sign-up', json=payload)
 
     def test_login(self):
         with app.app_context():
@@ -77,3 +82,4 @@ class AuthenticationTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    delete_test_user()

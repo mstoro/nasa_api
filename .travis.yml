@@ -1,0 +1,9 @@
+language: python
+python:
+  - "3.8"
+install:
+  - pip install -r requirements.txt
+script:
+  - flake8 .
+  - sqlite3 app.db < schema.sql
+  - python -m unittest test/test_auth.py
