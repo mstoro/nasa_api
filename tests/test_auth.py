@@ -20,7 +20,6 @@ class AuthenticationTest(unittest.TestCase):
 
     def test_correct_registration(self):
         with app.app_context():
-            delete_test_user()
             client = current_app.test_client(self)
             payload = {'name': fake.name(),
                        'password': fake.word()
@@ -75,6 +74,7 @@ class AuthenticationTest(unittest.TestCase):
                 headers={'token': token}
             )
             json_data = response.get_json()
+            delete_test_user()
 
             self.assertEqual(response.status_code, 200)
             self.assertTrue('status' in json_data)
