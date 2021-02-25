@@ -1,4 +1,4 @@
-from flask import Flask, g, jsonify
+from flask import Flask, jsonify
 
 from api.apod import apod_api
 from api.errors import TokenError
@@ -18,8 +18,7 @@ db.init_app(app)
 @app.errorhandler(TokenError)
 def handle_token_errors(error):
     app.logger.error(error.json)
-    g.errors = [error.json]
-    return jsonify(g.errors)
+    return jsonify(error.json)
 
 
 if __name__ == '__main__':
