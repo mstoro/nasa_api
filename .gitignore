@@ -1,8 +1,14 @@
 /venv
 /.pytest_cache
 /.idea
+<<<<<<< HEAD
 
 /media
 
 .coverage
 *.jpg
+=======
+*.jpg
+*.db
+.coverage
+>>>>>>> fix build
