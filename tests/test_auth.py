@@ -20,6 +20,7 @@ class AuthenticationTest(unittest.TestCase):
 
     def test_correct_registration(self):
         with app.app_context():
+            delete_test_user()
             client = current_app.test_client(self)
             payload = {'name': fake.name(),
                        'password': fake.word()
@@ -82,4 +83,3 @@ class AuthenticationTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    delete_test_user()
