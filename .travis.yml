@@ -1,0 +1,8 @@
+language: python
+python:
+  - "3.8"
+install:
+  - pip install -r reqirements.txt
+script:
+  - flake8 .
+  - coverage run --source api/ -m unittest --verbose tests && coverage report
