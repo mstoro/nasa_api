@@ -23,7 +23,3 @@ class AuthorizationError(ApiKeyError):
 class RequestError(ApiKeyError):
     def __init__(self, message):
         super().__init__(message, status=HTTPStatus.BAD_REQUEST)
-
-
-# class MissingApiKeyError(ApiKeyError):
-#     def __i
