@@ -18,7 +18,7 @@ def test_post_without_jwt(
          route, client, invalid_jwt, invalid_jwt_expected_payload
 ):
     response = client.post(route, headers=headers(invalid_jwt))
-    print(response.json)
+
     assert response.status_code == HTTPStatus.OK
     assert response.json == invalid_jwt_expected_payload
 
