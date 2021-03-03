@@ -1,3 +1,4 @@
+Authlib==0.15.3
 Faker==6.4.1
 flake8==3.8.4
 Flask==1.1.2
