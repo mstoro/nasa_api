@@ -7,8 +7,3 @@
 
 .coverage
 *.jpg
-=======
-*.jpg
-*.db
-.coverage
->>>>>>> fix build
