@@ -44,3 +44,16 @@ def get_json(scheme):
         raise RequestError(errors)
 
     return data
+
+
+def cme_form_data(data):
+    if isinstance(data, list):
+        res = {}
+        for element in data:
+            res['note'] = element['note']
+            res['startDate'] = element['startTime']
+            res['info'] = element['cmeAnalyses']
+
+        return res
+
+    return data
