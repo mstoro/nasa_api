@@ -7,9 +7,8 @@ from api.errors import AuthorizationError, RequestError
 
 
 def save_image(byte_array, path, name):
-    with open(name, 'wb') as file:
+    with open(os.path.join(path, name), 'wb') as file:
         file.write(byte_array)
-    return path + name
 
 
 def get_media_path():
