@@ -56,12 +56,7 @@ class APODTest(BaseTest):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json, expected_result)
 
-    @patch('requests.get')
-    def test_dayimage_invalid_apod_data(self, mock_get):
-        mock_get.return_value = self.get_mock_requests(
-            json=self.wrong_request_params,
-            status=HTTPStatus.OK
-        )
+    def test_dayimage_invalid_apod_data(self):
         response = self.client.post(
             path=self.dayimage_endpoint,
             headers=self.get_headers(
