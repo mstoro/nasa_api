@@ -10,7 +10,3 @@ class Request:
     def get(self):
         response = requests.get(self.url, params=self.params)
         return response
-
-    def post(self):
-        response = requests.post(self.url, data=self.payload)
-        return response

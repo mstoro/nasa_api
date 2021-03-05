@@ -30,7 +30,7 @@ def apod():
         image_url = response['thumbnail_url']
     else:
         image_url = (
-            response['hdurl'] if bool(params['hd']) is True
+            response['hdurl'] if bool(params['hd'])
             else response['url']
         )
 

@@ -1,7 +1,7 @@
 from http import HTTPStatus
 
 
-class ApiKeyError(Exception):
+class BaseError(Exception):
     def __init__(self, message, status):
         super().__init__()
         self.message = message
@@ -15,15 +15,11 @@ class ApiKeyError(Exception):
         }
 
 
-class AuthorizationError(ApiKeyError):
+class AuthorizationError(BaseError):
     def __init__(self):
         super().__init__('Invalid api key', HTTPStatus.BAD_REQUEST)
 
 
-class RequestError(ApiKeyError):
+class RequestError(BaseError):
     def __init__(self, message):
         super().__init__(message, status=HTTPStatus.BAD_REQUEST)
-
-
-# class MissingApiKeyError(ApiKeyError):
-#     def __i
