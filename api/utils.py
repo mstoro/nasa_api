@@ -56,3 +56,13 @@ def cme_form_data(data):
         return res
 
     return data
+
+
+def get_params(scheme):
+    data = dict(request.args)
+    errors = scheme.validate(data)
+
+    if errors:
+        raise RequestError(errors)
+
+    return data
