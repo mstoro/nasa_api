@@ -21,7 +21,7 @@ class CMEPayloadSchema(Schema):
                           required=True)
 
     @validates_schema()
-    def validate_date(self, data, **kwargs):
+    def validate_cme_period(self, data, **kwargs):
         if not (data['startDate'] <= data['endDate']):
             raise ValidationError(
                 'statDate must be earlier of equal to endDate'
