@@ -47,11 +47,15 @@ def get_json(scheme):
 
 def form_cme_data(data):
     if isinstance(data, list):
-        res = {}
+        res = []
         for element in data:
-            res['note'] = element['note']
-            res['startDate'] = element['startTime']
-            res['info'] = element['cmeAnalyses']
+            res.append(
+                {
+                    'note': element['note'],
+                    'startDate': element['startTime'],
+                    'info': element['cmeAnalyses']
+                }
+            )
 
         return res
 

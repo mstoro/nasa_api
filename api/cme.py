@@ -2,7 +2,7 @@ from flask import Blueprint, current_app, jsonify
 
 from api.request import Request
 from api.schemas import CMEPayloadSchema
-from api.utils import get_jwt, cme_form_data, get_params
+from api.utils import get_jwt, form_cme_data, get_params
 
 cme_api = Blueprint('cme', __name__)
 
@@ -18,6 +18,6 @@ def cme():
 
     response = cme_request.get().json()
 
-    cme_info = cme_form_data(response)
+    cme_info = form_cme_data(response)
 
     return jsonify(cme_info)
