@@ -45,7 +45,7 @@ def get_json(scheme):
     return data
 
 
-def cme_form_data(data):
+def form_cme_data(data):
     if isinstance(data, list):
         res = {}
         for element in data:
