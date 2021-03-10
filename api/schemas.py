@@ -22,7 +22,7 @@ class CMEPayloadSchema(Schema):
 
     @validates_schema()
     def validate_cme_period(self, data, **kwargs):
-        if not (data['startDate'] <= data['endDate']):
+        if data['startDate'] > data['endDate']:
             raise ValidationError(
                 'statDate must be earlier of equal to endDate'
             )
