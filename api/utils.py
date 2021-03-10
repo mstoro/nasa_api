@@ -43,3 +43,30 @@ def get_json(scheme):
         raise RequestError(errors)
 
     return data
+
+
+def form_cme_data(data):
+    if isinstance(data, list):
+        res = []
+        for element in data:
+            res.append(
+                {
+                    'note': element['note'],
+                    'startDate': element['startTime'],
+                    'info': element['cmeAnalyses']
+                }
+            )
+
+        return res
+
+    return data
+
+
+def get_params(scheme):
+    data = dict(request.args)
+    errors = scheme.validate(data)
+
+    if errors:
+        raise RequestError(errors)
+
+    return data
